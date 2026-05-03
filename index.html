@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grabbit — Free macOS Screenshot & Annotation Tool</title>
+  <meta name="description" content="Grabbit is a free, open source, lightweight alternative to Snagit for macOS. Capture, annotate, and share screenshots without the bloat." />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icon_32x32.png" />
+  <link rel="apple-touch-icon" href="assets/images/icon_128x128.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="assets/images/icon_32x32@2x.png" alt="Grabbit" width="28" height="28" />
+        <span>Grabbit</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/recursivecodes/grabbit" target="_blank" rel="noopener" class="nav-link-gh">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://github.com/recursivecodes/grabbit/releases" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Download Free</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-parallax-bg" id="parallaxBg"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Free &amp; Open Source — Always
+      </div>
+      <h1 class="hero-headline">
+        Screenshots.<br/>
+        <span class="gradient-text">Minus the bloat.</span>
+      </h1>
+      <p class="hero-sub">
+        Grabbit is the lightweight, open source macOS screenshot and annotation tool you've been waiting for.
+        All the things you actually use in Snagit. None of the subscription fees or feature creep.
+      </p>
+      <div class="hero-cta">
+        <a href="https://github.com/recursivecodes/grabbit/releases" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download for macOS
+        </a>
+        <a href="https://github.com/recursivecodes/grabbit" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span class="meta-pill">macOS 13+</span>
+        <span class="meta-pill">Swift 5.9</span>
+        <span class="meta-pill">100% Free</span>
+        <span class="meta-pill">No Telemetry</span>
+      </div>
+    </div>
+
+    <div class="hero-screenshot-wrap">
+      <div class="hero-screenshot-glow"></div>
+      <div class="hero-screenshot-frame">
+        <div class="frame-chrome">
+          <span></span><span></span><span></span>
+        </div>
+        <img src="assets/images/image-editor.png" alt="Grabbit editor showing annotation tools" class="hero-screenshot-img" />
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ORIGIN STORY RIBBON -->
+  <section class="ribbon">
+    <div class="ribbon-track">
+      <span>Screenshot in one hotkey</span>
+      <span class="ribbon-sep">✦</span>
+      <span>No subscription. Ever.</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Open source on GitHub</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Built by a dev, for devs</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Zero telemetry</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Lives in your menu bar</span>
+      <span class="ribbon-sep">✦</span>
+      <span>macOS native AppKit</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Screenshot in one hotkey</span>
+      <span class="ribbon-sep">✦</span>
+      <span>No subscription. Ever.</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Open source on GitHub</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Built by a dev, for devs</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Zero telemetry</span>
+      <span class="ribbon-sep">✦</span>
+      <span>Lives in your menu bar</span>
+      <span class="ribbon-sep">✦</span>
+      <span>macOS native AppKit</span>
+      <span class="ribbon-sep">✦</span>
+    </div>
+  </section>
+
+  <!-- ORIGIN STORY -->
+  <section class="origin" id="origin">
+    <div class="container">
+      <div class="origin-inner">
+        <div class="origin-label">The Origin Story</div>
+        <h2 class="origin-headline">
+          "I just want a simple tool to take screenshots and annotate them.<br/>
+          <em>Why does it cost $39/year? </em>"
+        </h2>
+        <div class="origin-body">
+          <p>
+            Snagit is great. It really is. But one day I looked at my subscription bill and thought:
+            <strong>I use maybe 15% of its features.</strong> Capture a region. Add an arrow and some text.
+            Blur something sensitive. Done. That's it. That's all I need.
+          </p>
+          <p>
+            So I built Grabbit — a focused, no-frills macOS screenshot tool that does exactly what I need
+            and nothing more. It lives in your menu bar, launches with a hotkey, and gets out of your way.
+            No cloud sync. No AI features you'll never use. No feature roadmap driven by enterprise sales.
+            Just a clean, fast and free tool that respects your time and your wallet.
+          </p>
+          <p>
+            It's open source because great tools should be. And it always will be.
+          </p>
+          <div class="origin-sig">
+            — <a href="https://recursive.codes" target="_blank" rel="noopener">Todd Sharp</a>, creator of Grabbit
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="compare">
+    <div class="container">
+      <div class="compare-grid">
+        <div class="compare-card compare-them">
+          <div class="compare-header">
+            <span class="compare-label">Snagit</span>
+          </div>
+          <ul class="compare-list">
+            <li class="compare-bad">$39.99/year</li>
+            <li class="compare-bad">Tons of features you'll never touch</li>
+            <li class="compare-bad">Bloated installer</li>
+            <li class="compare-bad">Closed source</li>
+            <li class="compare-bad">Cloud account required for some features</li>
+            <li class="compare-bad">App requires Dock presence</li>
+          </ul>
+        </div>
+        <div class="compare-vs">VS</div>
+        <div class="compare-card compare-us">
+          <div class="compare-header">
+            <img src="assets/images/icon_32x32@2x.png" alt="" width="22" height="22" />
+            <span class="compare-label">Grabbit</span>
+            <span class="compare-free-badge">FREE</span>
+          </div>
+          <ul class="compare-list">
+            <li class="compare-good">$0.00 forever</li>
+            <li class="compare-good">Exactly the features you actually use</li>
+            <li class="compare-good">Single binary, no installer</li>
+            <li class="compare-good">100% open source</li>
+            <li class="compare-good">Fully offline, zero accounts</li>
+            <li class="compare-good">Quiet menu bar icon — invisible until needed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="features-parallax-bg" id="featParallax"></div>
+    <div class="container">
+      <div class="section-label">What It Does</div>
+      <h2 class="section-headline">Every tool you need.<br/><span class="gradient-text">Nothing you don't.</span></h2>
+
+      <div class="features-grid">
+
+        <!-- Hotkey capture -->
+        <div class="feature-card feature-card-wide" data-anim>
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M8 6v12M16 6v12M2 12h20"/></svg>
+          </div>
+          <div class="feature-text">
+            <h3>Global Hotkey Capture</h3>
+            <p>Press <kbd>⌥⇧P</kbd> from anywhere — Grabbit takes over, you drag your selection, and the editor opens instantly. A second hotkey <kbd>⌥P</kbd> sends straight to clipboard, skipping the editor entirely.</p>
+          </div>
+          <div class="feature-visual">
+            <img src="assets/images/grabbit-menubar.png" alt="Grabbit menu bar" class="feature-img-menu" />
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><line x1="5" y1="19" x2="19" y2="5"/><polyline points="9 5 19 5 19 15"/></svg>
+          </div>
+          <h3>Arrow Tool</h3>
+          <p>Draw precise arrows with adjustable weight and color. Drag the tail handle to reposition the start point, or drag the body to move it entirely.</p>
+        </div>
+
+        <!-- Text -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          </div>
+          <h3>Text Annotations</h3>
+          <p>Click to place, double-click to edit inline. Choose from 13 system fonts, size 8–72pt, with configurable text color and outline weight.</p>
+        </div>
+
+        <!-- Shapes -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-shape">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+          </div>
+          <h3>Shapes</h3>
+          <p>Rectangles, circles, rounded rectangles. Set border weight (0–50pt), border color, and fill color. Fully transparent fills supported for callout boxes.</p>
+        </div>
+
+        <!-- Blur -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-blur">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          </div>
+          <h3>Blur &amp; Pixelate</h3>
+          <p>Gaussian Blur or Pixelate — draw a rectangle, crank the intensity to 100 and make that API key completely unreadable. Live preview, exactly what you see is what exports.</p>
+        </div>
+
+        <!-- Highlight -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <h3>Highlight Tool</h3>
+          <p>Draw semi-transparent color bands (5–85% opacity) over anything worth calling out. Yellow by default, but every color is yours.</p>
+        </div>
+
+        <!-- Effects -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-effects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Border &amp; Drop Shadow</h3>
+          <p>Toggle a border or drop shadow onto your image with full control: weight, color, X/Y offset, blur, and opacity. Make your screenshots pop off the page.</p>
+        </div>
+
+        <!-- Crop -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-crop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><polyline points="6 2 6 8 2 8"/><polyline points="18 22 18 16 22 16"/><path d="M6 8H22M2 16H18"/></svg>
+          </div>
+          <h3>Crop</h3>
+          <p>Trim your image with undo support. Drag the crop region, confirm, and Grabbit remembers — hit ⌘Z and you're back where you started.</p>
+        </div>
+
+        <!-- Layers -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-layers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>Layer Z-Order</h3>
+          <p>Right-click any annotation to Bring Forward, Send Backward, Bring to Front or Send to Back. Full layer stacking respected on export.</p>
+        </div>
+
+        <!-- Zoom -->
+        <div class="feature-card" data-anim>
+          <div class="feature-icon feature-icon-zoom">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <h3>Zoom 0.1× – 8×</h3>
+          <p>Pinch, scroll with ⌘, or use the +/− buttons. Annotate at 4× and export at full resolution — pixel-perfect every time.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="screenshots" id="screenshots">
+    <div class="container">
+      <div class="section-label">See It In Action</div>
+      <h2 class="section-headline">Clean UI. <span class="gradient-text">Zero friction.</span></h2>
+    </div>
+
+    <div class="screenshots-scroller">
+      <div class="screenshot-item screenshot-item-1">
+        <div class="screenshot-frame">
+          <div class="frame-chrome"><span></span><span></span><span></span></div>
+          <div class="screenshot-img-wrap">
+            <img src="assets/images/grabbit-ui-1.png" alt="Grabbit empty editor state" />
+          </div>
+        </div>
+        <p class="screenshot-caption">The editor — clean, focused, ready. Everything you need, nothing you don't.</p>
+      </div>
+      <div class="screenshot-item screenshot-item-2">
+        <div class="screenshot-frame">
+          <div class="frame-chrome"><span></span><span></span><span></span></div>
+          <div class="screenshot-img-wrap">
+            <img src="assets/images/image-editor.png" alt="Grabbit annotating an image" />
+          </div>
+        </div>
+        <p class="screenshot-caption">Annotating in real time — arrows, text, shapes, and blur all live on the canvas.</p>
+      </div>
+      <div class="screenshot-item screenshot-item-3">
+        <div class="screenshot-frame">
+          <div class="frame-chrome"><span></span><span></span><span></span></div>
+          <div class="screenshot-img-wrap">
+            <img src="assets/images/annotating-an-image.png" alt="Grabbit in use annotating a GitHub page" />
+          </div>
+        </div>
+        <p class="screenshot-caption">Grabbit's own GitHub page being annotated with Grabbit. Very meta. Very useful.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-glow"></div>
+    <div class="container">
+      <div class="section-label">Workflow</div>
+      <h2 class="section-headline">Three steps.<br/><span class="gradient-text">That's the whole thing.</span></h2>
+      <div class="how-steps">
+        <div class="how-step" data-anim>
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Press your hotkey</h3>
+            <p>Hit <kbd>⌥⇧P</kbd> from any app. A full-screen capture overlay appears instantly. Drag to select your region and release.</p>
+          </div>
+        </div>
+        <div class="how-connector"></div>
+        <div class="how-step" data-anim>
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Annotate</h3>
+            <p>The editor opens with your capture. Add arrows, text, shapes, blur, highlights. Layer them, move them, undo them. Properties update live in the sidebar.</p>
+          </div>
+        </div>
+        <div class="how-connector"></div>
+        <div class="how-step" data-anim>
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Save or Copy</h3>
+            <p>Hit <kbd>⌘C</kbd> to copy straight to clipboard, or <kbd>⌘S</kbd> to save as PNG, JPEG, or TIFF. Done. The whole thing takes seconds.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-bonus">
+        <div class="bonus-card">
+          <div class="bonus-icon">⚡</div>
+          <div>
+            <strong>Quick Capture</strong>
+            <span>Press <kbd>⌥P</kbd> to bypass the editor entirely — capture a region and it's already on your clipboard. No editor. No clicks. Just paste.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCE CODE SECTION -->
+  <section class="source-section">
+    <div class="source-parallax-wrap">
+      <div class="source-parallax-img" id="sourceParallax">
+        <img src="assets/images/grabbit-source.png" alt="Grabbit source code" />
+      </div>
+      <div class="source-overlay"></div>
+      <div class="source-content">
+        <div class="section-label" style="color: rgba(255,255,255,0.6)">Open Source</div>
+        <h2 class="section-headline" style="color: #fff">Read every line.<br/><span class="gradient-text">Fork it. Ship it.</span></h2>
+        <p style="color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 2rem; font-size: 1.1rem; line-height: 1.7;">
+          ~5,000 lines of pure Swift + AppKit. No external dependencies. No Xcode project file — just a single <code>bash build.sh</code>. Read the source, learn from it, improve it.
+        </p>
+        <a href="https://github.com/recursivecodes/grabbit" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Explore the Source
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-headline">Questions you<br/><span class="gradient-text">probably have.</span></h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            Wait, this is actually free? What's the catch?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Genuinely free. No catch. No "free tier with limits," no credit card required, no freemium upsell. Todd built Grabbit because he was tired of paying for Snagit to use 10% of its features. If you find it useful and want to say thanks, there's a <a href="https://www.buymeacoffee.com/toddraymont" target="_blank" rel="noopener">Buy Me a Coffee</a> link — but it's completely optional.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            Why build another screenshot tool? macOS already has built-in screenshots.
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>macOS's built-in tools are great for raw captures, but they're not annotation tools. The moment you need to add an arrow, blur something sensitive, drop a text label, or put a highlight over a key area — you're out of options. That's the exact gap Grabbit fills, without the $39/year Snagit asks for the privilege.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            Why isn't it on the Mac App Store?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>A few reasons. First, the Apple Developer Program costs $99/year — which directly contradicts "free forever." Second, Grabbit's entire build process is a single <code>bash build.sh</code> command; adding code signing, notarization, and App Store review cycles would add real ongoing friction to what is intentionally a zero-ceremony project. Finally, the <code>screencapture</code> CLI fallback used on macOS 13 Ventura can't run inside an App Store sandbox. Grabbit ships as a pre-built binary zip: download, extract, and go.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            It says "unidentified developer" when I open it. Is this safe?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Yes — Grabbit isn't notarized (that costs money and requires the $99/year Apple dev account). To open it the first time, right-click the app and choose Open, then confirm. Alternatively, the README walks you through removing the quarantine attribute with a single Terminal command. The source code is fully public — you can read every line and build it yourself if you prefer.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            Does it phone home? Collect data? Require an account?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Zero network requests. Zero accounts. Zero telemetry. Grabbit is a fully local app — it only touches the network if you're downloading a release from GitHub. All preferences are stored in macOS UserDefaults on your machine. Your screenshots never leave your computer.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            What macOS version do I need?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>macOS 13 Ventura or later. On macOS 14 Sonoma+, Grabbit uses ScreenCaptureKit for a clean, permission-aware capture pipeline. On Ventura, it falls back to the <code>screencapture</code> CLI — either way you'll be asked to grant Screen Recording permission the first time you capture.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            Can I change the keyboard shortcuts?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Yes. Open Settings from the menu bar icon and press your preferred key combo in the hotkey recorder. Grabbit validates that you've included at least one modifier key (⌘, ⌥, or ⌃) and saves the binding immediately. Both the Capture and Quick Capture hotkeys are independently configurable.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            I'm a developer. Can I build it from source?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Absolutely, and it's refreshingly simple. Clone the repo, run <code>bash build.sh</code>, and you've got a binary. No Xcode project file, no SPM, no CocoaPods. Just <code>swiftc</code> and a handful of system frameworks. See the README for the exact steps.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-anim>
+          <button class="faq-q" aria-expanded="false">
+            Will you add [feature X]?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Maybe — open an issue on GitHub and make the case! The core philosophy is to stay lean: if a feature is something 80%+ of users would reach for regularly, it belongs in Grabbit. If it's a power feature that makes the UI more complex for everyone else, it probably doesn't. The whole point is that it's NOT trying to be Snagit.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT / CTA -->
+  <section class="support">
+    <div class="support-glow-1"></div>
+    <div class="support-glow-2"></div>
+    <div class="container">
+      <div class="support-inner">
+        <img src="assets/images/icon_128x128@2x.png" alt="Grabbit" class="support-icon" />
+        <h2>Built with love by a solo dev.<br/>Powered by caffeine.</h2>
+        <p>Grabbit is a personal project. If it saves you $40/year and 10 minutes of frustration, consider buying me a coffee. Your kind monetary support is appreciated, and helps pay for tokens so that I can keep building. It genuinely helps keep the project alive.</p>
+        <div class="support-links">
+          <a href="https://www.buymeacoffee.com/toddraymont" target="_blank" rel="noopener" class="btn btn-coffee btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            Buy Todd a Coffee
+          </a>
+          <a href="https://github.com/recursivecodes/grabbit/releases" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Grabbit Free
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/images/icon_32x32@2x.png" alt="Grabbit" width="24" height="24" />
+          <span>Grabbit</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/recursivecodes/grabbit" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/recursivecodes/grabbit/releases" target="_blank" rel="noopener">Releases</a>
+          <a href="https://recursive.codes" target="_blank" rel="noopener">recursive.codes</a>
+          <a href="https://www.buymeacoffee.com/toddraymont" target="_blank" rel="noopener">Buy Me a Coffee</a>
+        </div>
+        <div class="footer-copy">
+          Made by <a href="https://recursive.codes" target="_blank" rel="noopener">Todd Sharp</a> · MIT License · Free forever
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
