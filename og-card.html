@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OG Card — Grabbit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: #09090f;
+      color: #e8e8f0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .card {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      align-items: center;
+      padding: 72px 88px;
+      overflow: hidden;
+    }
+
+    /* Background glows */
+    .glow-1 {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.4) 0%, transparent 65%);
+      top: -250px; left: -100px;
+      filter: blur(10px);
+      pointer-events: none;
+    }
+    .glow-2 {
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.25) 0%, transparent 65%);
+      bottom: -200px; right: 50px;
+      filter: blur(10px);
+      pointer-events: none;
+    }
+    .glow-3 {
+      position: absolute;
+      width: 350px; height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,70,229,0.2) 0%, transparent 65%);
+      top: 100px; right: 200px;
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    /* Noise texture */
+    .noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+    }
+
+    /* Grid lines */
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Border */
+    .card-border {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255,255,255,0.07);
+      pointer-events: none;
+    }
+
+    /* Left edge accent */
+    .edge-accent {
+      position: absolute;
+      left: 0; top: 15%; bottom: 15%;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, #7c3aed, #4f46e5, #06b6d4, transparent);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .app-name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #e8e8f0;
+    }
+
+    .free-badge {
+      margin-left: 4px;
+      background: linear-gradient(135deg, #7c3aed, #4f46e5, #06b6d4);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .headline {
+      font-size: 68px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    .headline .gradient-text {
+      background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sub {
+      font-size: 22px;
+      color: rgba(232,232,240,0.6);
+      line-height: 1.5;
+      max-width: 620px;
+      font-weight: 400;
+    }
+
+    .pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 6px 16px;
+      color: rgba(232,232,240,0.65);
+    }
+
+    /* Right side — decorative screenshot mockup */
+    .mockup {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(3deg);
+      width: 440px;
+      background: #1a1a2e;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.05),
+        0 30px 80px rgba(0,0,0,0.7),
+        0 0 80px rgba(124,58,237,0.15);
+      z-index: 1;
+    }
+
+    .mockup-chrome {
+      height: 28px;
+      background: #1f1f35;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .mockup-chrome span {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .mockup-chrome span:nth-child(1) { background: #ff5f57; }
+    .mockup-chrome span:nth-child(2) { background: #febc2e; }
+    .mockup-chrome span:nth-child(3) { background: #28c840; }
+
+    .mockup img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* URL bar at bottom */
+    .url-bar {
+      position: absolute;
+      bottom: 44px;
+      left: 88px;
+      font-family: 'Space Mono', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(232,232,240,0.3);
+      letter-spacing: 0.04em;
+    }
+
+    .url-bar span {
+      color: rgba(6,182,212,0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="glow-3"></div>
+    <div class="noise"></div>
+    <div class="grid"></div>
+    <div class="card-border"></div>
+    <div class="edge-accent"></div>
+
+    <div class="content">
+      <div class="top-row">
+        <img src="assets/images/icon_128x128@2x.png" alt="Grabbit" class="app-icon" />
+        <span class="app-name">Grabbit</span>
+        <span class="free-badge">Free Forever</span>
+      </div>
+
+      <div class="headline">
+        Screenshots.<br/>
+        <span class="gradient-text">Minus the bloat.</span>
+      </div>
+
+      <p class="sub">The free, open source macOS screenshot &amp; annotation tool. All the features you actually use — nothing you don't.</p>
+
+      <div class="pills">
+        <span class="pill">macOS 13+</span>
+        <span class="pill">Open Source</span>
+        <span class="pill">No Subscription</span>
+        <span class="pill">Zero Telemetry</span>
+      </div>
+    </div>
+
+    <div class="mockup">
+      <div class="mockup-chrome">
+        <span></span><span></span><span></span>
+      </div>
+      <img src="assets/images/image-editor.png" alt="Grabbit editor" />
+    </div>
+
+    <div class="url-bar"><span>getgrabbit.app</span></div>
+  </div>
+</body>
+</html>
